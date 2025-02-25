@@ -7,9 +7,6 @@ use SplFileInfo;
 use Clessic\Enum\OutputMode;
 use Clessic\Enum\AnsiEscCode;
 
-// 列挙体の読み込み
-require __DIR__ . DIRECTORY_SEPARATOR . "Enum" . DIRECTORY_SEPARATOR . "OutputMode.php";
-
 /**
  * Clessicクラス
  * Clessicプロジェクトを定義するクラス
