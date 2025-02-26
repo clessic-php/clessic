@@ -165,7 +165,7 @@ php （パースとコマンドの実行を保存したファイル名） sample
         <h1>Sample View</h1>
         <p>This is a sample view created for the Clessic framework.</p>
     </div>
-    <script src="https://cdn.jsdelivr.net/gh/clessic-php/clessic@main/Clessic.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/clessic-php/clessic@1.0/Clessic.min.js"></script>
     <script>
         var command = new Clessic();
         command.run(["sample", "-n", "World"]).then(function(result){
