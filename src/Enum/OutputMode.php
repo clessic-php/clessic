@@ -3,6 +3,8 @@ namespace Clessic\Enum;
 
 /**
  * 出力モードを定義する列挙型
+ *
+ * @package Clessic
  */
 enum OutputMode: int{
 	case Browser = 0;
@@ -12,6 +14,7 @@ enum OutputMode: int{
 	
 	/**
 	 * コマンドライン判定関数
+	 *
 	 * @return bool コマンドライン出力である場合はtrue、それ以外はfalse
 	 */
 	public function isCommandLine(): bool{
@@ -20,6 +23,7 @@ enum OutputMode: int{
 	
 	/**
 	 * ANSI判定関数
+	 *
 	 * @return bool ANSI出力である場合はtrue、それ以外はfalse
 	 */
 	public function isAnsi(): bool{
@@ -28,6 +32,7 @@ enum OutputMode: int{
 	
 	/**
 	 * ブラウザ判定関数
+	 *
 	 * @return bool ブラウザ出力である場合はtrue、それ以外はfalse
 	 */
 	public function isBrowser(): bool{

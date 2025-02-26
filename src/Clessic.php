@@ -10,6 +10,8 @@ use Clessic\Enum\AnsiEscCode;
 /**
  * Clessicクラス
  * Clessicプロジェクトを定義するクラス
+ *
+ * @package Clessic
  */
 class Clessic{
 	/**
@@ -50,7 +52,7 @@ class Clessic{
 	/**
 	 * コマンド検索パスを追加する関数
 	 * 
-	 * @param string ...$paths 可変長引数リストとして渡されるパス
+	 * @param string $paths 可変長引数リストとして渡されるパス
 	 * @return void
 	 */
 	public static function addCommandPaths(string ...$paths): void{
@@ -70,7 +72,7 @@ class Clessic{
 	 * コマンドを検索して実行可能なクラスを返す関数
 	 * 
 	 * @param string $command コマンド名
-	 * @return string|null 実行可能なファイル名、見つからない場合はnull
+	 * @return ?string 実行可能なファイル名、見つからない場合はnull
 	 */
 	public static function findCommand(string $command): ?string{
 		$encoded = strtolower(str_replace("/", DIRECTORY_SEPARATOR, $command . ".php"));
@@ -101,7 +103,7 @@ class Clessic{
 	/**
 	 * ビュー検索パスを追加する関数
 	 * 
-	 * @param string ...$paths 可変長引数リストとして渡されるパス
+	 * @param string $paths 可変長引数リストとして渡されるパス
 	 * @return void
 	 */
 	public static function addViewPaths(string ...$paths): void{
@@ -112,7 +114,7 @@ class Clessic{
 	 * ビューを検索して実行可能なクラスを返す関数
 	 * 
 	 * @param string $view ビュー名
-	 * @return string|null 実行可能なファイル名、見つからない場合はnull
+	 * @return ?string 実行可能なファイル名、見つからない場合はnull
 	 */
 	public static function findView(string $view): ?string{
 		$encoded = strtolower(str_replace("/", DIRECTORY_SEPARATOR, $view . ".php"));
@@ -143,7 +145,7 @@ class Clessic{
 	/**
 	 * リクエストボディパーサー検索パスを追加する関数
 	 * 
-	 * @param string ...$paths 可変長引数リストとして渡されるパス
+	 * @param string $paths 可変長引数リストとして渡されるパス
 	 * @return void
 	 */
 	public static function addRequestBodyParserPaths(string ...$paths): void{
@@ -190,7 +192,7 @@ class Clessic{
 
 // 初期値設定
 if(php_sapi_name() == "cli"){
-	Clessic::$arguments = array_slice($argv, 1);
+	Clessic::$arguments = array_slice($GLOBALS["argv"], 1);
 	Clessic::$outputMode = OutputMode::CommandLineAnsi;
 }else if(array_key_exists("HTTP_X_OUTPUTMODE", $_SERVER) && strtolower($_SERVER["HTTP_X_OUTPUTMODE"]) == "emulation"){
 	Clessic::$arguments = array_map("urldecode", preg_split("/\\++/", trim($_SERVER["QUERY_STRING"] ?? "", "+")));
@@ -205,6 +207,6 @@ foreach($_SERVER as $requestHeader => $requestHeaderValue){
 	}
 	Clessic::$requestHeaders[substr(preg_replace_callback("/_?./", fn($matches) => (str_starts_with($matches[0], "_") ? ("-" . substr($matches[0], 1)) : strtolower($matches[0])), $requestHeader), 5)] = $requestHeaderValue;
 }
-if($_SERVER["REQUEST_METHOD"] != "GET"){
+if((array_key_exists("REQUEST_METHOD", $_SERVER)) && $_SERVER["REQUEST_METHOD"] != "GET"){
 	Clessic::$requestBody = file_get_contents((Clessic::$outputMode)->isCommandLine() ? "php://stdin" : "php://input");
 }

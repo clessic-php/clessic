@@ -3,6 +3,8 @@ namespace Clessic\Enum;
 
 /**
  * ANSIエスケープシーケンスを定義する列挙型
+ *
+ * @package Clessic
  */
 enum AnsiEscCode: string{
 	case ResetAll = "\033[0m";
@@ -42,6 +44,7 @@ enum AnsiEscCode: string{
 	
 	/**
 	 * 文字色変更判定関数
+	 *
 	 * @return bool 文字色変更である場合はtrue、それ以外はfalse
 	 */
 	public function isTextColor(): bool{
@@ -58,6 +61,7 @@ enum AnsiEscCode: string{
 	
 	/**
 	 * 背景色変更判定関数
+	 *
 	 * @return bool 背景色変更である場合はtrue、それ以外はfalse
 	 */
 	public function isBackgroundColor(): bool{
@@ -74,6 +78,7 @@ enum AnsiEscCode: string{
 	
 	/**
 	 * リセット判定関数
+	 *
 	 * @return bool リセットである場合はtrue、それ以外はfalse
 	 */
 	public function isReset(): bool{
@@ -89,6 +94,7 @@ enum AnsiEscCode: string{
 	
 	/**
 	 * リセット値取得関数
+	 *
 	 * @return ?AnsiEscCode 対応するリセット値を取得、無い場合はnull
 	 */
 	public function getReset(): ?self{

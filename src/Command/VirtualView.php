@@ -9,6 +9,8 @@ use Clessic\Enum\ReturnCode;
 /**
  * 仮想ビューコマンド
  * コマンド名でビューを検索、表示を行う仮想コマンド
+ *
+ * @package Clessic
  */
 class VirtualView extends CommandBase{
 	/** @inheritdoc CommandBase */

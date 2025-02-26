@@ -8,6 +8,8 @@ use Clessic\Model\ArgumentInformation;
 
 /**
  * コマンドライン引数を解析するクラス
+ *
+ * @package Clessic
  */
 class Command{
 	/**
@@ -43,6 +45,7 @@ class Command{
 	
 	/**
 	 * コンストラクタ
+	 *
 	 * @param array<string> $args コマンドライン引数の配列
 	 */
 	public function __construct(array $args){
@@ -65,8 +68,9 @@ class Command{
 	
 	/**
 	 * コマンドライン引数を解析して取得する
+	 *
 	 * @param array<string, ArgumentInformation> $opts 許可されるオプションの設定
-	 * @return ?array<string, ?string|int|float|bool|array<string>|array<int>|array<float>> 解析結果の連想配列
+	 * @return ?array<string, string|int|float|bool|array<string>|array<int>|array<float>|null> 解析結果の連想配列
 	 */
 	protected function getArguments(array $opts): ?array{
 		$res = [];
@@ -235,6 +239,7 @@ class Command{
 	
 	/**
 	 * 指定したインデックスの引数を取得する
+	 *
 	 * @param int $index 取得するインデックス
 	 * @param ArgumentType $type 期待する引数の型
 	 * @return mixed 取得した引数の値
@@ -265,6 +270,7 @@ class Command{
 	
 	/**
 	 * ヘルプが指定されたかどうかを判定する
+	 *
 	 * @return bool ヘルプフラグの状態
 	 */
 	public function hasHelp(): bool{
@@ -273,6 +279,7 @@ class Command{
 	
 	/**
 	 * ヘルプメッセージを生成する
+	 *
 	 * @param string $pre ヘルプの前に追加するプレフィックス
 	 * @param array<string, ArgumentInformation> $options 設定されているオプション
 	 * @return string ヘルプメッセージ
@@ -333,6 +340,7 @@ class Command{
 	
 	/**
 	 * コマンドを実行する
+	 *
 	 * @param string $proxy コマンドファイルの検索を行わずに代替で実行するクラス
 	 * @return int|ReturnCode 実行結果のエラーコード
 	 */
@@ -379,6 +387,7 @@ class Command{
 	
 	/**
 	 * コマンドを実行パラメータを取得する
+	 *
 	 * @return array{body: mixed, headers: array<string, string>}
 	 */
 	function getExecuteParameters(): array{

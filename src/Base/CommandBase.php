@@ -1,9 +1,13 @@
 <?php
 namespace Clessic\Base;
 use Clessic\Enum\ReturnCode;
+use Clessic\Enum\ArgumentType;
+use Clessic\Enum\ArgumentMode;
 
 /**
  * コマンドを定義するための抽象クラス
+ *
+ * @package Clessic
  */
 abstract class CommandBase{
 	/**
@@ -22,11 +26,11 @@ abstract class CommandBase{
 	public static $version;
 	
 	/**
-	 * @var array<string, array<string|Clessic\Enum\ArgumentType|Clessic\Enum\ArgumentMode>> $options コマンドのオプション設定。
+	 * @var array<string, array<string|ArgumentType|ArgumentMode>> $options コマンドのオプション設定。
 	 * - キー キーで指定した値がrun()引数の$argsのキーとなる連想配列で、オプションを取得できる。
 	 * - 値
-	 *   - Clessic\Enum\ArgumentType 引数の型（例: Clessic\Enum\ArgumentType::String）
-	 *   - Clessic\Enum\ArgumentMode 引数のモード（例: Clessic\Enum\ArgumentMode::Single）
+	 *   - ArgumentType 引数の型（例: Clessic\Enum\ArgumentType::String）
+	 *   - ArgumentMode 引数のモード（例: Clessic\Enum\ArgumentMode::Single）
 	 *   - string 短いオプション名 "-"から始まる文字列 （例: -h）
 	 *   - string 長いオプション名 "--"から始まる文字列 （例: --help）
 	 *   - string 任意のインデックス番号の引数 "%"とインデックス番号を結合した文字列 （例: %1）
@@ -41,6 +45,7 @@ abstract class CommandBase{
 	/**
 	 * 実行メソッド
 	 * 具象クラスで実装されるべき
+	 *
 	 * @param array<mixed> $args
 	 * @param mixed $body
 	 * @param array<string, string> $headers

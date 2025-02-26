@@ -3,14 +3,28 @@ namespace Clessic;
 
 /**
  * ビューを出力するクラス
+ *
+ * @package Clessic
  */
 class View{
+	/**
+	 * @var string $name ビューの名前
+	 */
 	private $name;
+	
+	/**
+	 * @var bool $extended ビューの継承
+	 */
 	private $extended;
+	
+	/**
+	 * @var ?array<mixed> $subView 継承したビューにアサインするパラメータ
+	 */
 	private $subView;
 	
 	/**
 	 * コンストラクタ
+	 *
 	 * @param string $name ビューの名前
 	 */
 	public function __construct(string $name){
@@ -21,6 +35,7 @@ class View{
 	
 	/**
 	 * ビューの出力
+	 *
 	 * @param mixed $args パラメータ
 	 * @return mixed ビューから返される値
 	 */
@@ -35,10 +50,11 @@ class View{
 	
 	/**
 	 * 継承するビューの作成
+	 *
 	 * @param string $name ビューの名前
 	 * @return View ビューから返される値
 	 */
-	public static function extends(string $name){
+	public static function extends(string $name): static{
 		$ins = new static($name);
 		$ins->extended = true;
 		return $ins;
@@ -46,6 +62,9 @@ class View{
 	
 	/**
 	 * パラメータのアサイン
+	 *
+	 * @param mixed $args アサインするパラメータ
+	 * @return View thisの値
 	 */
 	public function assign(mixed ...$args): static{
 		if($this->extended){
@@ -55,8 +74,7 @@ class View{
 	}
 	
 	/**
-	 * データの取得
-	 * 
+	 * ビューデータの取得
 	 * 指定されたパラメータに基づいてデータを取得し、ビューをレンダリングします。
 	 * 
 	 * @param array<mixed> $params ビューに渡すパラメータ

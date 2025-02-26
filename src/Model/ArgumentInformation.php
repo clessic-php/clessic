@@ -5,6 +5,8 @@ use Clessic\Enum\ArgumentMode;
 
 /**
  * 引数情報モデル
+ *
+ * @package Clessic
  */
 class ArgumentInformation{
 	/**
@@ -54,6 +56,7 @@ class ArgumentInformation{
 	
 	/**
 	 * コンストラクタ
+	 *
 	 * @param array<string|ArgumentType|ArgumentMode> $info オプションの設定の配列
 	 */
 	public function __construct(string|ArgumentType|ArgumentMode ...$info){
@@ -115,7 +118,8 @@ class ArgumentInformation{
 	
 	/**
 	 * 引数初期化時の値取得
-	 * @return ?bool|array 初期化時の値
+	 *
+	 * @return bool|array|null 初期化時の値
 	 */
 	public function getInitializeValue(): bool|array|null{
 		if($this->isMultiple()){
@@ -129,6 +133,7 @@ class ArgumentInformation{
 	
 	/**
 	 * 複数値判定関数
+	 *
 	 * @return bool 複数値である場合はtrue、それ以外はfalse
 	 */
 	public function isMultiple(): bool{
@@ -138,6 +143,7 @@ class ArgumentInformation{
 	
 	/**
 	 * 文字列引数判定関数
+	 *
 	 * @return bool 文字列引数である場合はtrue、それ以外はfalse
 	 */
 	public function isString(): bool{
@@ -146,6 +152,7 @@ class ArgumentInformation{
 	
 	/**
 	 * 整数引数判定関数
+	 *
 	 * @return bool 整数引数である場合はtrue、それ以外はfalse
 	 */
 	public function isInt(): bool{
@@ -154,6 +161,7 @@ class ArgumentInformation{
 	
 	/**
 	 * 実数引数判定関数
+	 *
 	 * @return bool 実数引数である場合はtrue、それ以外はfalse
 	 */
 	public function isFloat(): bool{
@@ -162,6 +170,7 @@ class ArgumentInformation{
 	
 	/**
 	 * フラグ引数判定関数
+	 *
 	 * @return bool フラグ引数である場合はtrue、それ以外はfalse
 	 */
 	public function isBoolean(): bool{
@@ -170,6 +179,7 @@ class ArgumentInformation{
 	
 	/**
 	 * ヘルプオプション判定関数
+	 *
 	 * @return bool ヘルプオプションである場合はtrue、それ以外はfalse
 	 */
 	public function isHelp(): bool{

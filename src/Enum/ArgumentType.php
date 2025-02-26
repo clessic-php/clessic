@@ -3,6 +3,8 @@ namespace Clessic\Enum;
 
 /**
  * 引数の型を定義する列挙型
+ *
+ * @package Clessic
  */
 enum ArgumentType: int{
 	case String = 0;
@@ -13,6 +15,7 @@ enum ArgumentType: int{
 	
 	/**
 	 * 文字列引数判定関数
+	 *
 	 * @return bool 文字列引数である場合はtrue、それ以外はfalse
 	 */
 	public function isString(): bool{
@@ -21,6 +24,7 @@ enum ArgumentType: int{
 	
 	/**
 	 * 整数引数判定関数
+	 *
 	 * @return bool 整数引数である場合はtrue、それ以外はfalse
 	 */
 	public function isInt(): bool{
@@ -29,6 +33,7 @@ enum ArgumentType: int{
 	
 	/**
 	 * 実数引数判定関数
+	 *
 	 * @return bool 実数引数である場合はtrue、それ以外はfalse
 	 */
 	public function isFloat(): bool{
@@ -37,6 +42,7 @@ enum ArgumentType: int{
 	
 	/**
 	 * フラグ引数判定関数
+	 *
 	 * @return bool フラグ引数である場合はtrue、それ以外はfalse
 	 */
 	public function isBoolean(): bool{
@@ -45,6 +51,7 @@ enum ArgumentType: int{
 	
 	/**
 	 * ヘルプオプション判定関数
+	 *
 	 * @return bool ヘルプオプションである場合はtrue、それ以外はfalse
 	 */
 	public function isHelp(): bool{
