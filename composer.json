@@ -1,7 +1,7 @@
 {
   "name": "clessic-php/clessic",
-  "description": "Lightweight Framework",
-  "keywords": ["framework", "command"],
+  "description": "A lightweight framework for parsing command-line arguments and query parameters in PHP and executing commands.",
+  "keywords": ["framework", "command", "CLI", "ANSI-escape", "query-parameters"],
   "type": "library",
   "license": "MIT",
   "authors": [
