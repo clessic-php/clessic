@@ -204,10 +204,13 @@ if(php_sapi_name() == "cli"){
 foreach($_SERVER as $requestHeader => $requestHeaderValue){
 	if($requestHeader == "CONTENT_TYPE"){
 		Clessic::$requestHeaders["Content-Type"] = $requestHeaderValue;
+		continue;
 	}else if($requestHeader == "CONTENT_LENGTH"){
 		Clessic::$requestHeaders["Content-Length"] = $requestHeaderValue;
+		continue;
 	}else if($requestHeader == "CONTENT_MD5"){
 		Clessic::$requestHeaders["Content-Md5"] = $requestHeaderValue;
+		continue;
 	}else if(!str_starts_with($requestHeader, "HTTP_")){
 		continue;
 	}
