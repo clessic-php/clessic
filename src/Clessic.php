@@ -202,7 +202,13 @@ if(php_sapi_name() == "cli"){
 	Clessic::$outputMode = OutputMode::Browser;
 }
 foreach($_SERVER as $requestHeader => $requestHeaderValue){
-	if(!str_starts_with($requestHeader, "HTTP_")){
+	if($requestHeader == "CONTENT_TYPE"){
+		Clessic::$requestHeaders["Content-Type"] = $requestHeaderValue;
+	}else if($requestHeader == "CONTENT_LENGTH"){
+		Clessic::$requestHeaders["Content-Length"] = $requestHeaderValue;
+	}else if($requestHeader == "CONTENT_MD5"){
+		Clessic::$requestHeaders["Content-Md5"] = $requestHeaderValue;
+	}else if(!str_starts_with($requestHeader, "HTTP_")){
 		continue;
 	}
 	Clessic::$requestHeaders[substr(preg_replace_callback("/_?./", fn($matches) => (str_starts_with($matches[0], "_") ? ("-" . substr($matches[0], 1)) : strtolower($matches[0])), $requestHeader), 5)] = $requestHeaderValue;
